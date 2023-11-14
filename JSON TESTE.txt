@@ -1,0 +1,22 @@
+{
+    "eritrocitos": 4.5,
+    "hemoglobina": 13.2,
+    "hematocrito": 40.0,
+    "hcm": 32.0,
+    "vgm": 90.0,
+    "chgm": 33.0,
+    "metarrubricitos": 1.5,
+    "proteina_plasmatica": 7.5,
+    "leucocitos": 7000,
+    "leucograma": "2000",
+    "segmentados": 50,
+    "bastonetes": 2,
+    "blastos": 1,
+    "metamielocitos": 3,
+    "mielocitos": 2,
+    "linfocitos": 30,
+    "monocitos": 10,
+    "eosinofilos": 5,
+    "basofilos": 1,
+    "plaquetas": 200000
+}
