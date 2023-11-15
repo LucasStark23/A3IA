@@ -60,7 +60,6 @@ def sugerir_diagnostico():
 
     diagnostico_predito = model.predict(features_scaled)[0]
 
-    # Converter para um tipo de dado nativo do Python (int)
     diagnostico_predito = int(diagnostico_predito)
 
     logging.debug(f"Diagnóstico previsto: {diagnostico_predito}")
