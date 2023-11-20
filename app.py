@@ -6,22 +6,19 @@ import logging
 
 app = Flask(__name__)
 
-
 def carregar_dataset():
     dataset = pd.read_csv("dataset-hemograma.csv")
     return dataset
 
-
 dataset_hemograma = carregar_dataset()
 
-y = dataset_hemograma["id"]
+y = dataset_hemograma["diagnostico"]
 
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(dataset_hemograma.drop(["id", "diagnostico"], axis=1))
 
 model = LogisticRegression()
 model.fit(X_scaled, y)
-
 
 @app.route("/diagnostico", methods=["POST"])
 def sugerir_diagnostico():
@@ -60,12 +57,11 @@ def sugerir_diagnostico():
 
     diagnostico_predito = model.predict(features_scaled)[0]
 
-    diagnostico_predito = int(diagnostico_predito)
-
     logging.debug(f"Diagnóstico previsto: {diagnostico_predito}")
-
-    return jsonify({"diagnostico_predito": diagnostico_predito})
-
+    
+    id_correspondente = dataset_hemograma.loc[dataset_hemograma['diagnostico'] == diagnostico_predito, 'id'].values[0]
+    print(id_correspondente)
+    return jsonify({"id":"{}".format(id_correspondente),"diagnostico_predito": diagnostico_predito})
 
 if __name__ == "__main__":
     app.run(debug=True)
